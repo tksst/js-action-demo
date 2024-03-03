@@ -1,0 +1,22 @@
+name: action dynamic generation demo
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  job1:
+    runs-on: Ubuntu-22.04
+    permissions:
+      contents: read
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: |
+          pwd
+          ls -la
+
+      - run: node index.mjs
+
+      - uses: ./setup-pnpm
